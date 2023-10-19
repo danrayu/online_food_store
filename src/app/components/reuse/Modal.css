@@ -1,3 +1,29 @@
 .backdrop-modal {
   background-color: rgba(0, 0, 0, 0.464);
 }
+
+
+@keyframes delete {
+  0% {
+    opacity: 1;
+    height: auto; /* Assuming the paragraph starts with an auto height */
+    padding: initial; /* Assuming the paragraph starts with its default padding */
+    margin: initial; /* Assuming the paragraph starts with its default margin */
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0; /* Ensure it stays transparent */
+    height: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.close-animation {
+  animation-name: delete;
+  animation-duration: 4s; /* Adjusted to 1.6s for the entire animation, so 600ms is roughly 40% of the time */
+  animation-fill-mode: forwards; /* This ensures the animation's end state persists */
+  animation-delay: 5s;
+}

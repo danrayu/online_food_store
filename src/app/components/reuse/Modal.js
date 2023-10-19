@@ -6,6 +6,20 @@ const Modal = (props) => {
     return Math.round(props.getTotalPrice() * 100) / 100;
   };
 
+  const [errorDisplayed, setErrorDisplay] = useState(false);
+
+  const openError = () => {
+    setErrorDisplay(true);
+    setTimeout(() => {
+      closeError();
+    }, 9000);    
+  }
+
+  const closeError = () => {
+    setErrorDisplay(false);
+  }
+
+
   return (
     <div className="modal backdrop-modal show d-block">
       <div className="modal-dialog">
@@ -32,9 +46,12 @@ const Modal = (props) => {
             >
               Close
             </button>
-            <button type="button" className="btn btn-primary">
+            <button type="button" className="btn btn-primary" onClick={openError}>
               Order
             </button>
+            {errorDisplayed && <p className="text-danger close-animation">
+              There is currently no backend, so no 'order' functionality
+            </p>}
           </div>
         </div>
       </div>
