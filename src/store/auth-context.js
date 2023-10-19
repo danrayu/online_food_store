@@ -119,7 +119,6 @@ const products = [
   },
 ];
 
-
 const getItemById = (id, list) => {
   for (let itemi in list) {
     if (list[itemi]["id"] === id) {
@@ -140,9 +139,10 @@ const getIndexById = (id, list) => {
 };
 
 export const AuthContextProvider = (props) => {
+
   const [cartItems, setCartItems] = useState([]);
 
-  const minusCart = (id, all=false) => {
+  const minusCart = (id, all = false /* entirely delete item from cart */) => {
     const idInCart = getIndexById(id, cartItems);
     let temp = [...cartItems];
     if (idInCart === null) {
@@ -151,16 +151,14 @@ export const AuthContextProvider = (props) => {
 
     if (all || cartItems[idInCart].quantity === 1) {
       temp.splice(idInCart, 1);
-    }
-    else {
+    } else {
       temp[idInCart] = {
         id: id,
         quantity: temp[idInCart].quantity - 1,
       };
     }
     setCartItems([...temp]);
-    
-  }
+  };
 
   const newToCart = (id) => {
     setCartItems((oldItems) => {
@@ -188,14 +186,14 @@ export const AuthContextProvider = (props) => {
     }
   };
 
-  const getCartProducts = (cart) => {
+  const getCartProducts = () => {
     let cartProducts = [];
-    for (let itemI in cart) {
-      let id = cart[itemI].id;
+    for (let itemI in cartItems) {
+      let id = cartItems[itemI].id;
       cartProducts.push({
         id: id,
-        quantity: cart[itemI].quantity,
-        fields: getItemById(cart[itemI].id, products),
+        quantity: cartItems[itemI].quantity,
+        fields: getItemById(cartItems[itemI].id, products),
       });
     }
     return cartProducts;
@@ -207,9 +205,8 @@ export const AuthContextProvider = (props) => {
     for (let itemI in cart) {
       price += cart[itemI].quantity * cart[itemI].fields.price;
     }
-    console.log(price);
     return price;
-  }
+  };
 
   return (
     <AuthContext.Provider

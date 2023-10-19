@@ -5,7 +5,7 @@ const Body = () => {
   return (
     <div className='w-100 min-vh-100'>
       <div className='container my-4'>
-        <ProductView fullView={true}></ProductView>
+        <ProductView />
       </div>
     </div>
   )

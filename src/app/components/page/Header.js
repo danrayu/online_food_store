@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import CartButton from "../CartButton";
 import Modal from "../reuse/Modal";
-import ProductView from "../ProductView";
 import AuthContext from "@/store/auth-context";
+import CartView from "../CartView";
 
 const Header = () => {
 
@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <>
-      { show && <Modal close={handleClose} getTotalPrice={context.cartTotalPrice}><ProductView fullView={false}/></Modal> }
+      { show && <Modal close={handleClose} getTotalPrice={context.cartTotalPrice}><CartView /></Modal> }
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-4">
         <a className="navbar-brand" href="#">
           Hasan Foods Co.

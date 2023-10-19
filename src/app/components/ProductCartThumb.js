@@ -5,23 +5,35 @@ import style from "./ProductCartThumb.module.css";
 
 const ProductCartThumb = (props) => {
   let item = props.prod;
-  const [isClosing, setClosingState] = useState(false);
+  const [componentClosed, setComponentClosed] = useState(false);
+
+  const closeComponent = () => {
+    setComponentClosed(true);
+    setTimeout(() => {
+      props.context.minusCart(item["id"], true);
+    }, 505);
+  };
 
   const removeFromCart = () => {
-    setClosingState(true);
-    setTimeout(() => props.context.minusCart(item["id"], true), 1000);
+    closeComponent();
   };
+
+  console.log("re-rendered cart item");
 
   const modCart = (positive) => {
     if (positive) {
       props.context.addToCart(item["id"]);
     } else {
+      if (item.quantity === 1) {
+        closeComponent();
+        return;
+      }
       props.context.minusCart(item["id"]);
     }
   };
 
   return (
-    <div className={"col-12 p-3 " + (isClosing && style["close-animation"])}>
+    <div className={"col-12 " + (componentClosed ? style["close-animation"] : ' p-3')}>
       <div className="p-3 card text-light d-flex flex-column align-content-between h-100">
         <div>
           <h4>{item.fields["name"]}</h4>

@@ -3,16 +3,24 @@
 }
 
 @keyframes delete {
-  0%   {}
+  0%   {
+    /* You can specify the initial opacity here if you want it to grow more opaque */
+    opacity: 1;
+    padding: 1rem;
+  }
   50%  {
+    padding: 0;
     opacity: 0;
   }
   100% {
+    opacity: 0; /* Ensure it stays transparent */
     height: 0;
+    padding: 0;
   }
 }
 
 .close-animation {
   animation-name: delete;
-  animation-duration: 1s;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards; /* This ensures the animation's end state persists */
 }

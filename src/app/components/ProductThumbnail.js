@@ -8,7 +8,6 @@ const ProductThumbnail = (props) => {
   const buttonPress = () => {
     let id = item["id"];
     props.press(id);
-    
   };
 
   const onMouseDown = () => {
