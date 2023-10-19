@@ -1,0 +1,18 @@
+.quantity-field {
+  font-size: 23px;
+}
+
+@keyframes delete {
+  0%   {}
+  50%  {
+    opacity: 0;
+  }
+  100% {
+    height: 0;
+  }
+}
+
+.close-animation {
+  animation-name: delete;
+  animation-duration: 1s;
+}

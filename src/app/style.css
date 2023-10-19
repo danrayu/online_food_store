@@ -1,0 +1,22 @@
+.card {
+  --bs-card-bg: rgb(41, 46, 51);
+  border: 0
+}
+
+.w-fit {
+  width: fit-content !important;
+}
+
+.border-on {
+  --bs-card-border-color: rgba(0,0,0,0);
+}
+
+.bg-gray {
+  --bs-card-bg: rgb(58, 65, 71);
+}
+
+.btn-yellow-pressed {
+  background-color: #997300 !important;
+  --bs-btn-active-border-color: #997300 !important;
+}
+
